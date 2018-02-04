@@ -4,7 +4,7 @@ using namespace std;
 
 int weight[210];
 int value[210];
-int dp[5010]; // dp[i]表示载重i内的最大价值
+int dp[5010]; // dp[j]表示载重j内的最大价值
 
 int main() {
     int n, m; // 物品个数和背包载重
