@@ -1,47 +1,41 @@
 #include <iostream>
+#include <cstring>
 #include <queue>
-#include <map>
+#include <set>
+
 using namespace std;
 
 string init, fin;
-int ans,empty;
+int ans, empty;
 queue <string> que;
-map <string, bool> vis;
-
-int getEmpty(const string &s) {
-    // 返回空缺的索引
-    for (int i = 0; i < 9; ++i) {
-        if (s[i] == '.')
-            return i;
-    }
-}
+set <string> vis;
 
 void push(string s, const int &empty, const int &x) {
-    int t= empty+x;
+    int t = empty + x;
     if (0 <= t && t < 9) {
         swap(s[empty], s[t]);
-        if (!vis[s]) {
+        if (vis.find(s) == vis.end()) {
             que.push(s);
-            vis[s] = true;
+            vis.insert(s);
         }
     }
 }
 
 int BFS() {
     que.push(init);
-    vis[init] = true;
+    vis.insert(init);
     que.push("n");
     while (!que.empty()) {
         string cur = que.front();
         que.pop();
         if (cur == "n") { // 本层结束
             ans++;
-            if(que.size()>0)
+            if (que.size() > 0)
                 que.push("n");
         } else if (cur == fin) // BFS终止
             return ans;
-        else{
-            empty = getEmpty(cur);
+        else {
+            empty = cur.find('.');
             push(cur, empty, -1);
             push(cur, empty, -3);
             push(cur, empty, +1);
@@ -53,6 +47,6 @@ int BFS() {
 
 int main() {
     cin >> init >> fin;
-    cout<< BFS();
+    cout << BFS();
     return 0;
 }
