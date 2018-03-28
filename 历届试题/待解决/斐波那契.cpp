@@ -39,7 +39,7 @@ int main() {
         if (m & 1)
             matMul(B, A);
         matMul(A, A);
-        m = m >> 1;
+        m >>= 1;
     }
     fm = B[0][1];
     // f(i)前n项和 = (f(n+2) + fm - 1) % fm
@@ -49,7 +49,7 @@ int main() {
         if (tn & 1)
             matMul(D, C);
         matMul(C, C);
-        tn = tn >> 1;
+        tn >>= 1;
     }
     cout << (D[0][1] + fm - 1) % fm % p;
     return 0;
