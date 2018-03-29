@@ -50,9 +50,10 @@ int main() {
     int N, res = 0;
     cin >> N;
     int nums[N + 5] = {};
-    for (int i = 1; i <= N; i++) {
+    for (int i = 1; i <= N; i++)
         cin >> nums[i];
-    }
+
+    // 选择排序，nums[i]应当为i，否则向后查找i，交换
     for (int i = 1; i <= N; i++) {
         if (nums[i] != i) {
             for (int j = i + 1; j <= N; j++) {

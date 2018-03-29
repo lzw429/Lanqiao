@@ -64,29 +64,28 @@ int main() {
     int n;
     cin >> n;
     int nums[n + 5] = {};
-    int comp[n + 5] = {}; // 压缩
-    unordered_map<int, int> map; // map[i] = 最近的i的索引
+    int comp[n + 5] = {}; // 压缩 compressed
+    unordered_map<int, int> map; // map[i] = 前面最近的数字i的索引
+
+    for (int i = 0; i < n; i++)
+        cin >> nums[i];
 
     for (int i = 0; i < n; i++) {
-        cin >> nums[i];
-    }
-    for (int i = 0; i < n; i++) {
         unordered_map<int, int>::iterator last = map.find(nums[i]);
-        if (last == map.end()) {
+        if (last == map.end()) { // 当前数字没出现过
             comp[i] = -nums[i];
             map[nums[i]] = i;
         } else {
             unordered_set<int> s;
-            for (int j = last->second + 1; j < i; j++) {
+            for (int j = last->second + 1; j < i; j++) // 统计中间有多少种数字
                 s.insert(nums[j]);
-            }
             comp[i] = s.size();
-            map[nums[i]] = i;
+            map[nums[i]] = i; // 更新最后出现位置
         }
     }
 
-    for (int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++)
         cout << comp[i] << " ";
-    }
+
     return 0;
 }

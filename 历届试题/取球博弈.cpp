@@ -59,18 +59,18 @@ int minBalls; // 最少取球数
 int n[5]; // 可取球个数
 int x[10]; // 5堆球
 
-string nim(int rest, int owe, int other) {
-    if (rest < minBalls) {
+string nim(int rest, int owe, int other) {// 参数：桌上剩余球数，我方持球数，对方持球数
+    if (rest < minBalls) { // 剩余球数不满足三种选择中的最小取球数
         if (owe % 2 != 0 && other % 2 == 0) // 先手奇，后手偶，赢
             return "+";
         if (owe % 2 != 0 && other % 2 != 0) // 先手奇，后手奇，平
             return "0";
         if (owe % 2 == 0 && other % 2 == 0) // 先手偶，后手偶，平
             return "0";
-        return "-"; // 其余情况，输
+        return "-"; // 先手偶，后手奇，输
     }
     bool draw = false; // 最坏情况是否能平局
-    for (int i = 0; i <= 2; i++) {
+    for (int i = 0; i < 3; i++) {
         if (rest < n[i]) // 剩下的球不足取n[i]
             continue;
         string res = nim(rest - n[i], other, owe + n[i]);
@@ -79,16 +79,17 @@ string nim(int rest, int owe, int other) {
         if (res == "0") // 对方平，我方最坏情况能平
             draw = true;
     }
+    // 如果整个循环过程中，对方始终赢，draw 为false
     if (draw)
         return "0"; // 无法赢，但存在方法平局
-    else return "-";
+    else return "-"; // 无法平局，只能输
 }
 
 int main() {
     for (int i = 0; i < 3; i++)
-        cin >> n[i];
+        cin >> n[i]; // 取球的选择
     for (int i = 0; i < 5; i++)
-        cin >> x[i];
+        cin >> x[i]; // 开场球数
 
     minBalls = min(n[0], min(n[1], n[2])); // 最少取球数
     for (int i = 0; i < 5; i++) {

@@ -6,13 +6,13 @@ using namespace std;
 int main() {
     int a, b, c;
     cin >> a >> b >> c;
-    int max;
-    max = (a > b) ? a : b;
-    max = (c > max) ? c : max;
-    while (max <= INT_MAX) {
-        max += max;
-        if (max % a == 0 && max % b == 0 && max % c == 0) {
-            cout << max;
+    int Max;
+    Max = max(a, b);
+    Max = max(Max, c);
+    while (Max <= INT_MAX) {
+        Max *= 2;
+        if (Max % a == 0 && Max % b == 0 && Max % c == 0) {
+            cout << Max;
             return 0;
         }
     }
