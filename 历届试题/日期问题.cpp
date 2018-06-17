@@ -96,7 +96,7 @@ int main() {
     push(c, a, b);
     push(c, b, a);
     for (set<Date>::iterator i = dateSet.begin(); i != dateSet.end(); ++i) {
-       Date d=*i;
+        Date d = *i;
         printf("%d-%02d-%02d\n", d.year, d.month, d.day);
     }
     return 0;
