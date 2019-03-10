@@ -56,32 +56,27 @@ CPUÏûºÄ  < 3000ms
 using namespace std;
 
 const int nums_size = 9;
-int nLen;
+int nLen = 0;
 
-int strToInt(string str) {
-    int res;
-    stringstream ss;
-    ss << str;
-    ss >> res;
+int substrInt(char *str, int start, int len) {
+    int res = 0;
+    for (int i = start; i < start + len; i++) {
+        res *= 10;
+        res += str[i] - '0';
+    }
     return res;
 }
 
-char* intToStr(int num) {
-    char str[9] = {};
-    sprintf(str, "%d", num);
-    return str;
-}
-
-bool check(const string &nums, int sum) {
+bool check(char *nums, int sum) {
     for (int i = 1; i <= nLen; i++) {
         for (int j = (nums_size - i) / 2; j <= nums_size - i - 1; j++) {
-            int a = strToInt(nums.substr(0, i));
-            int b = strToInt(nums.substr(i, j));
-            int c = strToInt(nums.substr(i + j, nums_size - i - j));
+            int a = substrInt(nums, 0, i);
+            int b = substrInt(nums, i, j);
+            int c = substrInt(nums, i + j, nums_size - i - j);
             if (a >= sum) 
                 return false;
             if(b % c == 0 && sum * c == a * c + b) {
-                cout << a <<" "<< b<< " " << c << " " << endl;
+                // cout << a <<" "<< b<< " " << c << " " << endl;
                 return true;                
             }
         }
@@ -92,14 +87,19 @@ bool check(const string &nums, int sum) {
 int main() {
     int n;
     cin >> n;
-    nLen = intToStr(n).size();
+    int m = n;
+    while(m) {
+        nLen++;
+        m /= 10;
+    }
     int cnt = 0;
-    string nums = "123456789"; 
+    char nums[15] = "123456789";
     do {
         if (check(nums, n)== true) {
             cnt++;
         }
-    } while (next_permutation(nums.begin(), nums.end()));
+    } while (next_permutation(nums, nums + 9));
     cout << cnt << endl;
     return 0;
 }
+
