@@ -32,6 +32,7 @@ void init() {
 
 mat mul(mat a, mat b) {
     mat c(a.size(), vec(b[0].size())); // as result
+
     for (int i = 0; i < a.size(); i++) {
         for (int k = 0; k < b.size(); k++) { // a[0].size() must equal to b.size()
             for (int j = 0; j < b[0].size(); j++) {
@@ -43,7 +44,7 @@ mat mul(mat a, mat b) {
 }
 
 mat pow(mat a, long long n) {
-    long long size = a.size();
+    int size = a.size();
     mat res(size, vec(size));
     for (int i = 0; i < size; i++) {
         res[i][i] = 1;
@@ -62,8 +63,8 @@ long long pow(long long a, long long n) {
     long long res = 1;
     while (n) {
         if (n & 1)
-            res = res * a % MOD;
-        a = a * a % MOD;
+            res = (res * a) % MOD;
+        a = (a * a) % MOD;
         n >>= 1;
     }
     return res;
@@ -73,17 +74,15 @@ int main() {
     init();
 
     cin >> n >> m;
+    int x, y;
     for (int i = 0; i < m; i++) {
-        int x, y;
         cin >> x >> y;
         conflict[op[x] - 1][y - 1] = 0;
         conflict[op[y] - 1][x - 1] = 0;
     }
-    conflict = pow(conflict, n);
+    conflict = pow(conflict, n - 1); // n - 1 次方，而不是 n 次方
     mat dp(6, vec(1, 1));
     mat res = mul(conflict, dp);
-
-    cout << "The size of res: " << res.size() << " " << res[0].size() << endl;
 
     for (int j = 0; j < 6; j++) {
         ans = (ans + res[j][0]) % MOD;

@@ -3,4 +3,11 @@ project(LanQiao)
 
 set(CMAKE_CXX_STANDARD 98)
 
-add_executable(dice3 历届试题/2015年第六届/C语言A组/9/垒骰子_3_矩阵快速幂.cpp)
+add_executable(2015.9 历届试题/2015年第六届/C语言A组/9/垒骰子_3_矩阵快速幂.cpp 历届试题/2016年第七届/C语言A组/2/生日蜡烛.cpp)
+add_executable(2016.1 历届试题/2016年第七届/C语言A组/1/网友年龄.cpp)
+add_executable(2016.2 历届试题/2016年第七届/C语言A组/2/生日蜡烛.cpp)
+add_executable(2016.3 历届试题/2016年第七届/C语言A组/3/方格填数.cpp)
+add_executable(2016.4 历届试题/2016年第七届/C语言A组/4/快速排序.cpp)
+add_executable(2016.5 历届试题/2016年第七届/C语言A组/5/消除尾一.cpp)
+add_executable(2016.6 历届试题/2016年第七届/C语言A组/6/寒假作业.cpp)
+add_executable(2016.7 历届试题/2016年第七届/C语言A组/7/剪邮票.cpp)
