@@ -11,3 +11,6 @@ add_executable(2016.4 历届试题/2016年第七届/C语言A组/4/快速排序.c
 add_executable(2016.5 历届试题/2016年第七届/C语言A组/5/消除尾一.cpp)
 add_executable(2016.6 历届试题/2016年第七届/C语言A组/6/寒假作业.cpp)
 add_executable(2016.7 历届试题/2016年第七届/C语言A组/7/剪邮票.cpp)
+add_executable(2016.8 历届试题/2016年第七届/C语言A组/8/四平方和.cpp)
+add_executable(2016.9 历届试题/2016年第七届/C语言A组/9/密码脱落.cpp)
+add_executable(2017.1 历届试题/2017年第八届/C语言A组/1/迷宫.cpp)
