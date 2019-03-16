@@ -3,6 +3,8 @@
 //
 
 #include <iostream>
+#include <cstring>
+#include <cstdio>
 
 using namespace std;
 
@@ -32,7 +34,6 @@ bool check(int x, int y) {
         return true;
     else if (y == 9 && mp[x][y] == 'R')
         return true;
-    else if (x == 0 || x == 9 || y == 0 || y == 9) return false;
     vis[x][y] = true;
     if (mp[x][y] == 'U')
         return check(x - 1, y);
@@ -42,13 +43,15 @@ bool check(int x, int y) {
         return check(x + 1, y);
     else if (mp[x][y] == 'R')
         return check(x, y + 1);
-    vis[x][y] = false;
 }
 
 int main() {
     for (int i = 0; i < 10; i++) {
         for (int j = 0; j < 10; j++) {
-            if (check(i, j)) ans++;
+            memset(vis, false, sizeof(vis));
+            bool flag = check(i, j);
+            printf("(%d, %d): %s\n", i, j, (flag ? "true" : "false"));
+            if (flag) ans++;
         }
     }
 
