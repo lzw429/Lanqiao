@@ -11,7 +11,7 @@ using namespace std;
 int ans;
 
 bool vis[11][11];
-char mp[11][11] = {
+char vis[11][11] = {
         {"UDDLUULRUL"},
         {"UURLLLRRRU"},
         {"RRUURLDLRD"},
@@ -26,22 +26,22 @@ char mp[11][11] = {
 
 bool check(int x, int y) {
     if (vis[x][y]) return false;
-    if (x == 0 && mp[x][y] == 'U')
+    if (x == 0 && vis[x][y] == 'U')
         return true;
-    else if (y == 0 && mp[x][y] == 'L')
+    else if (y == 0 && vis[x][y] == 'L')
         return true;
-    else if (x == 9 && mp[x][y] == 'D')
+    else if (x == 9 && vis[x][y] == 'D')
         return true;
-    else if (y == 9 && mp[x][y] == 'R')
+    else if (y == 9 && vis[x][y] == 'R')
         return true;
     vis[x][y] = true;
-    if (mp[x][y] == 'U')
+    if (vis[x][y] == 'U')
         return check(x - 1, y);
-    else if (mp[x][y] == 'L')
+    else if (vis[x][y] == 'L')
         return check(x, y - 1);
-    else if (mp[x][y] == 'D')
+    else if (vis[x][y] == 'D')
         return check(x + 1, y);
-    else if (mp[x][y] == 'R')
+    else if (vis[x][y] == 'R')
         return check(x, y + 1);
 }
 
