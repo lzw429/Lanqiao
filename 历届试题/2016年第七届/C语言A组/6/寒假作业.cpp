@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int ans;
+int len;
 
 bool check(vector<int> num) {
     return (num[0] + num[1] == num[2]) && (num[3] - num[4] == num[5])
@@ -18,7 +18,7 @@ bool check(vector<int> num) {
 void f(int level, vector<int> num) {
     if (level == 12) {
         if (check(num))
-            ans++;
+            len++;
         return;
     }
 
@@ -50,6 +50,6 @@ void f(int level, vector<int> num) {
 int main() {
     vector<int> num;
     f(0, num);
-    cout << ans << endl;
+    cout << len << endl;
     return 0;
 }

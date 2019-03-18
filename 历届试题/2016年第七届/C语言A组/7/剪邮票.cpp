@@ -16,7 +16,7 @@ using namespace std;
 
 int stamp[13] = {0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1};
 bool vis[4][5];
-int ans;
+int len;
 
 int dfs(int x, int y) {
     if (!stamp[4 * x + y])
@@ -50,7 +50,7 @@ int main() {
                     printStamp();
                     if (dfs(i, j) == 5) {
                         cout << "true" << endl;
-                        ans++;
+                        len++;
                     } else cout << "false" << endl;
                     breakFlag = true;
                     break;
@@ -60,6 +60,6 @@ int main() {
                 break;
         }
     } while (next_permutation(stamp, stamp + 12));
-    cout << ans << endl;
+    cout << len << endl;
     return 0;
 }

@@ -17,7 +17,7 @@ typedef vector<vec> mat;
 
 const int MOD = 1000000000 + 7;
 int n, m;
-long long ans;
+long long len;
 int op[7];
 mat conflict(6, vec(6, 1));
 
@@ -85,12 +85,12 @@ int main() {
     mat res = mul(conflict, dp);
 
     for (int j = 0; j < 6; j++) {
-        ans = (ans + res[j][0]) % MOD;
+        len = (len + res[j][0]) % MOD;
     }
 
     long long t = pow(4, n);
-    ans = (ans * t) % MOD;
-    cout << ans << endl;
+    len = (len * t) % MOD;
+    cout << len << endl;
 
     return 0;
 } 

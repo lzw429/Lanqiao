@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int ans;
+int len;
 
 bool vis[11][11];
 char vis[11][11] = {
@@ -51,10 +51,10 @@ int main() {
             memset(vis, false, sizeof(vis));
             bool flag = check(i, j);
             printf("(%d, %d): %s\n", i, j, (flag ? "true" : "false"));
-            if (flag) ans++;
+            if (flag) len++;
         }
     }
 
-    cout << ans << endl;
+    cout << len << endl;
     return 0;
 }

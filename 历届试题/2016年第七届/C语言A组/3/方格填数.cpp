@@ -9,11 +9,11 @@
 
 using namespace std;
 
-int ans;
+int len;
 
 void f(int level, vector<int> square) {
     if (level == 10) {
-        ans++;
+        len++;
         return;
     }
 
@@ -71,6 +71,6 @@ void f(int level, vector<int> square) {
 int main() {
     vector<int> square;
     f(0, square);
-    cout << ans << endl;
+    cout << len << endl;
     return 0;
 }

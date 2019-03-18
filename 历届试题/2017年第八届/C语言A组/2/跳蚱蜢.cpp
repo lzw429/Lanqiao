@@ -15,7 +15,7 @@ const int size = 9;
 string start = "012345678";
 string target = "087654321";
 queue<string> que;
-int ans = 0, pos;
+int len = 0, pos;
 map<string, bool> vis;
 
 /**
@@ -42,7 +42,7 @@ int main() {
         if (target == cur)
             break;
         if (cur == "0") {
-            ans++;
+            len++;
             if (!que.empty()) {
                 que.push("0");
                 continue;
@@ -75,5 +75,5 @@ int main() {
             que.push(s4);
         }
     }
-    cout << ans << endl;
+    cout << len << endl;
 }

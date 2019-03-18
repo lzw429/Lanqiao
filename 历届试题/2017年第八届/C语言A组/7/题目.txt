@@ -17,7 +17,7 @@
 
 例如，
 输入：
-((xx|xxx)x|(x|xx))xx  
+((xx|xxx)x|(x|xx))xx
 
 程序应该输出：
 6  
