@@ -5,33 +5,33 @@
 #define MOD 1000000007
 using namespace std;
 
-int n, m, k; // µØÍ¼nĞĞmÁĞ£¬×î¶àk¼ş±¦±´
+int n, m, k; // åœ°å›¾nè¡Œmåˆ—ï¼Œæœ€å¤škä»¶å®è´
 int map[MAXN][MAXN];
 int dp[MAXN][MAXN][15][15];
 
-// ¼ÇÒä»¯DFS
+// è®°å¿†åŒ–DFS
 int DFS(int x, int y, int sum, int max) {
-    // (x, y)±íÊ¾×ø±ê£»sumÊÇÊÖÖĞ±¦±´¼şÊı£¬maxÊÇÊÖÖĞ±¦±´×î´ó¼ÛÖµ
-    // ·µ»ØĞĞ¶¯·½°¸Êı
+    // (x, y)è¡¨ç¤ºåæ ‡ï¼›sumæ˜¯æ‰‹ä¸­å®è´ä»¶æ•°ï¼Œmaxæ˜¯æ‰‹ä¸­å®è´æœ€å¤§ä»·å€¼
+    // è¿”å›è¡ŒåŠ¨æ–¹æ¡ˆæ•°
     int ret = 0;
-    if (dp[x][y][sum][max + 1] != -1) // max+1 ÊÇÒòÎªmax³õÊ¼ÖµÎª-1£¬ÏÂÍ¬
+    if (dp[x][y][sum][max + 1] != -1) // max+1 æ˜¯å› ä¸ºmaxåˆå§‹å€¼ä¸º-1ï¼Œä¸‹åŒ
     {
         return dp[x][y][sum][max + 1];
     }
-    
+
     int cur = map[x][y];
     if (x == n - 1 && y == m - 1) {
-        // ÉîËÑµ½ÖÕµã
+        // æ·±æœåˆ°ç»ˆç‚¹
         if (sum == k || (cur > max && sum == k - 1))
             ret++;
-        ret %= MOD; 
+        ret %= MOD;
         return ret;
     }
-    
-    // ÏòÓÒ×ß
+
+    // å‘å³èµ°
     if (x < n - 1) {
         if (cur > max) {
-            // ´ËµØ±¦±´¼ÛÖµ´óÓÚÊÖÖĞÈÎÒâ±¦±´¼ÛÖµ£¬¿ÉÒÔ»ñµÃ¸Ã±¦±´£¬Ò²¿É·ÅÆú
+            // æ­¤åœ°å®è´ä»·å€¼å¤§äºæ‰‹ä¸­ä»»æ„å®è´ä»·å€¼ï¼Œå¯ä»¥è·å¾—è¯¥å®è´ï¼Œä¹Ÿå¯æ”¾å¼ƒ
             ret += DFS(x + 1, y, sum + 1, cur);
             ret %= MOD;
         }
@@ -39,7 +39,7 @@ int DFS(int x, int y, int sum, int max) {
         ret %= MOD;
     }
 
-    // ÏòÏÂ×ß
+    // å‘ä¸‹èµ°
     if (y < m - 1) {
         if (cur > max) {
             ret += DFS(x, y + 1, sum + 1, cur);
@@ -53,10 +53,10 @@ int DFS(int x, int y, int sum, int max) {
 }
 
 int main() {
-    memset(dp, -1, sizeof(dp)); // Õâ²½²»¿ÉºöÂÔ 
+    memset(dp, -1, sizeof(dp)); // è¿™æ­¥ä¸å¯å¿½ç•¥ 
     cin >> n >> m >> k;
-    for (int i = 0; i < n; ++i) { // x·¶Î§[0, n-1]
-        for (int j = 0; j < m; ++j) { // y·¶Î§[0, m-1]
+    for (int i = 0; i < n; ++i) { // xèŒƒå›´[0, n-1]
+        for (int j = 0; j < m; ++j) { // yèŒƒå›´[0, m-1]
             cin >> map[i][j];
         }
     }

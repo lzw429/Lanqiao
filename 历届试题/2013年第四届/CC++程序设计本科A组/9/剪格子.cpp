@@ -70,12 +70,12 @@ class Cut { // 一种剪格子方法
 public:
     set<pair<int, int> > grids; // 包含若干格子
     int sum; // 所有格子的数值和 
-    
-    Cut(){}
-    
+
+    Cut() {}
+
     Cut(Cut &cut) {
         this->sum = cut.sum;
-        
+
         for (set<pair<int, int> >::iterator i = cut.grids.begin(); i != cut.grids.end(); i++) {
             this->grids.insert(*i);
         }
@@ -85,7 +85,7 @@ public:
 vector<Cut *> cuts[100]; // 分别存储格子数为1~100的各种剪法 
 
 bool check(int i, Cut *cut_new) {
-    if(cut_new->sum == total / 2) {
+    if (cut_new->sum == total / 2) {
         cout << i << endl;
         return true;
     } else if (cut_new->sum < total / 2) {
@@ -96,71 +96,71 @@ bool check(int i, Cut *cut_new) {
 
 int main() {
     cin >> m >> n;
-    
+
     // 输入 
-    for(int i = 0; i < n; i++) {
-        for(int j = 0; j < m; j++) {
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
             cin >> g[i][j];
             total += g[i][j];
         }
-    } 
-    
+    }
+
     // 第一个格子达到一半
-    if(g[0][0] == total / 2) {
+    if (g[0][0] == total / 2) {
         cout << 1;
         return 0;
-    } 
-    
+    }
+
     Cut *c = new Cut(); // 一种剪法 
-    const pair<int, int> p (0, 0); // 左上角格子 
+    const pair<int, int> p(0, 0); // 左上角格子
     c->grids.insert(p);
     c->sum = g[0][0];
     cuts[1].push_back(c); // 只包含一个格子且该格子为(0, 0)的只有这一种剪法
-    
-    for(int i = 2; i < m * n; i++) {
+
+    for (int i = 2; i < m * n; i++) {
         // i 是格子数，用 cuts[i-1] 中的剪法来生成 cuts[i] 
-        for(int j = 0; j < cuts[i - 1].size(); j++) { 
+        for (int j = 0; j < cuts[i - 1].size(); j++) {
             // 遍历格子数量为 i - 1 的所有剪法 
-            Cut *pCut = cuts[i-1][j];
+            Cut *pCut = cuts[i - 1][j];
             set<pair<int, int> > &grids = pCut->grids;
             int sum = pCut->sum;
-            
+
             for (set<pair<int, int> >::iterator it = grids.begin(); it != grids.end(); it++) {
                 // 遍历每个格子 
                 const pair<int, int> &p = *it;
                 int x = p.first; // 不是 p->first 
                 int y = p.second;
-                
-                if(x + 1 < n && grids.find(make_pair(x + 1, y)) == grids.end()) {
+
+                if (x + 1 < n && grids.find(make_pair(x + 1, y)) == grids.end()) {
                     Cut *cut_new = new Cut(*pCut);
                     cut_new->grids.insert(make_pair(x + 1, y));
                     cut_new->sum += g[x + 1][y];
-                    if(check(i, cut_new)) return 0;
+                    if (check(i, cut_new)) return 0;
                 }
-                
-                if(x - 1 >= 0 && grids.find(make_pair(x - 1, y)) == grids.end()) {
+
+                if (x - 1 >= 0 && grids.find(make_pair(x - 1, y)) == grids.end()) {
                     Cut *cut_new = new Cut(*pCut);
                     cut_new->grids.insert(make_pair(x - 1, y));
                     cut_new->sum += g[x - 1][y];
-                    if(check(i, cut_new)) return 0;
+                    if (check(i, cut_new)) return 0;
                 }
-                
-                if(y - 1 >= 0 && grids.find(make_pair(x, y - 1)) == grids.end()) {
+
+                if (y - 1 >= 0 && grids.find(make_pair(x, y - 1)) == grids.end()) {
                     Cut *cut_new = new Cut(*pCut);
                     cut_new->grids.insert(make_pair(x, y - 1));
                     cut_new->sum += g[x][y - 1];
-                    if(check(i, cut_new)) return 0;
+                    if (check(i, cut_new)) return 0;
                 }
-                
-                if(y + 1 < m && grids.find(make_pair(x, y + 1)) == grids.end()) {
+
+                if (y + 1 < m && grids.find(make_pair(x, y + 1)) == grids.end()) {
                     Cut *cut_new = new Cut(*pCut);
                     cut_new->grids.insert(make_pair(x, y + 1));
                     cut_new->sum += g[x][y + 1];
-                    if(check(i, cut_new)) return 0;
+                    if (check(i, cut_new)) return 0;
                 }
-            }            
-        } 
-    } 
+            }
+        }
+    }
     cout << 0 << endl;
     return 0;
 }

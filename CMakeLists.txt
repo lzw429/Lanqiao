@@ -3,6 +3,8 @@ project(LanQiao)
 
 set(CMAKE_CXX_STANDARD 98)
 
+add_executable(2013.6 历届试题/2013年第四届/CC++程序设计本科A组/6/前缀表达式.cpp)
+
 add_executable(2015.9 历届试题/2015年第六届/C语言A组/9/垒骰子_3_矩阵快速幂.cpp)
 
 add_executable(2016.1 历届试题/2016年第七届/C语言A组/1/网友年龄.cpp)

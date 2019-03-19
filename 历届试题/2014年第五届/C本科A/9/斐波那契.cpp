@@ -1,14 +1,20 @@
 #include <climits>
 #include <iostream>
-#include <cstdio> 
+#include <cstdio>
 #include <vector>
 
 using namespace std;
 typedef vector<long long> vec;
-typedef vector <vec> mat;
+typedef vector<vec> mat;
 
 long long n, m, p, MOD;
 
+/**
+ * 快速乘法
+ * @param a
+ * @param b
+ * @return a * b
+ */
 long long mul(long long a, long long b) {
     if (a > b) {
         long long t = a;
@@ -17,7 +23,7 @@ long long mul(long long a, long long b) {
     }
     long long ans = 0; // a * b % MOD
     while (b) {
-        if(b & 1)
+        if (b & 1)
             ans = (ans + a) % MOD;
         a = (a + a) % MOD;
         b >>= 1;
@@ -59,8 +65,13 @@ mat fibInit() {
     return Fib;
 }
 
+/**
+ * 获得 Fib 数列第n项的值
+ * @param n 数列索引
+ * @return Fib[n]
+ */
 long long getFib(long long n) {
-    mat fib = fibInit(); 
+    mat fib = fibInit();
     mat ans = pow(fib, n);
     return ans[0][1];
 }
@@ -68,13 +79,13 @@ long long getFib(long long n) {
 int main() {
     cin >> n >> m >> p;
     MOD = p;
-    if(m >= n + 2) {
+    if (m >= n + 2) {
         cout << getFib(n + 2) - 1;
     } else {
         MOD = LLONG_MAX;
-        MOD = getFib(m); 
+        MOD = getFib(m);
         cout << getFib(n + 2) % p - 1;
-    } 
+    }
     return 0;
 }
 

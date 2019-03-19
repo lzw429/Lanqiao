@@ -69,24 +69,24 @@ using namespace std;
 int main() {
     int line;
     cin >> line;
-    
+
     int m, n;
-    
+
     vector<int> nums;
     int num;
-    while(cin >> num) {
+    while (cin >> num) {
         nums.push_back(num);
     }
-    
+
     sort(nums.begin(), nums.end());
     for (int i = 1; i < nums.size(); i++) {
-        if(nums[i] - nums[i - 1] == 0) { // ÖØºÅ
-            n = nums[i]; 
-        } else if(nums[i] - nums[i - 1] == 2) { // ¶ÏºÅ
-            m = nums[i] - 1; 
+        if (nums[i] - nums[i - 1] == 0) { // ÖØºÅ
+            n = nums[i];
+        } else if (nums[i] - nums[i - 1] == 2) { // ¶ÏºÅ
+            m = nums[i] - 1;
         }
     }
-    
-    cout << m << " "<< n;
+
+    cout << m << " " << n;
     return 0;
 } 

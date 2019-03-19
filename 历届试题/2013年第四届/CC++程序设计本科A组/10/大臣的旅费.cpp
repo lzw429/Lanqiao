@@ -78,17 +78,17 @@ int ansDis = -1;
 
 void dfs(int node, int dis) {
     // 找到树中距离node最远的点的距离 
-    
+
     if (dis > ansDis) {
         ansDis = dis;
         ansNode = node;
     }
-    
+
     vis[node] = true;
     vector<Edge> &edges = g[node];
     for (int i = 0; i < edges.size(); i++) {
         int to = edges[i].to;
-        if(vis[to] == false) {
+        if (vis[to] == false) {
             dfs(to, dis + edges[i].dis);
         }
     }
@@ -101,14 +101,14 @@ int main() {
     int from, to, dis;
     for (int i = 0; i < n - 1; i++) {
         cin >> from >> to >> dis;
-        struct Edge e1 = {to, dis}; 
+        struct Edge e1 = {to, dis};
         struct Edge e2 = {from, dis};
         g[from].push_back(e1);
         g[to].push_back(e2);
     }
-    
+
     dfs(1, 0); // 1号为首都
-    ansDis = -1; 
+    ansDis = -1;
     dfs(ansNode, 0);
     // cout << ansNode << endl;
     // cout << ansDis << endl;
