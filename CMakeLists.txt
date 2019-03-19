@@ -23,3 +23,8 @@ add_executable(2017.6 历届试题/2017年第八届/C语言A组/6/最大公共�
 add_executable(2017.7 历届试题/2017年第八届/C语言A组/7/正则问题.cpp)
 add_executable(2017.8 历届试题/2017年第八届/C语言A组/8/包子凑数.cpp)
 add_executable(2017.9 历届试题/2017年第八届/C语言A组/9/分巧克力.cpp)
+
+
+add_executable(algo.1.5 蓝桥课程/算法很美/一.位运算/整数奇偶位互换.cpp)
+add_executable(algo.2.6 蓝桥课程/算法很美/二.递归/汉诺塔.cpp)
+add_executable(algo.3.14 蓝桥课程/算法很美/三.查找与排序/归并排序求逆序对.cpp)
