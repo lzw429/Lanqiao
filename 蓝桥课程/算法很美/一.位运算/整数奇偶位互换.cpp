@@ -11,8 +11,8 @@
 using namespace std;
 
 int exchangeOddEven(int x) {
-    int odd = (x & 0xaaaaaaaa);
-    int even = (x & 0x55555555);
+    int odd = (x & 0xaaaaaaaa); // 1010 1010 1010 1010 1010 1010 1010 1010
+    int even = (x & 0x55555555); // 0101 0101 0101 0101 0101 0101 0101 0101
     return (odd >> 1) + (even << 1);
 }
 

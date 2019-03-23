@@ -12,12 +12,13 @@ void swap(int a[], int i, int j) {
 }
 
 int partition(int a[], int p, int r) {
-    int i = p;
-    int j = r + 1;
     int x = a[p]; // pivot
+    int i = p; // pivot 位置，即首个被排序元素的前一位
+    int j = r + 1; // 最后一个元素的后一位
+
     while (1) {
         while (i < r && a[++i] < x);
-        while (a[--j] > x);
+        while (a[--j] > x); // 隐含 j > p
         if (i >= j) break;
         swap(a, i, j);
     }

@@ -3,6 +3,12 @@ project(LanQiao)
 
 set(CMAKE_CXX_STANDARD 98)
 
+add_executable(basis1 基础练习/十六进制转八进制.cpp)
+add_executable(basis2 基础练习/FJ的字符串.cpp)
+
+add_executable(train1 算法训练/快速排序.cpp)
+add_executable(train2 算法训练/数的划分.cpp)
+
 add_executable(2013.6 历届试题/2013年第四届/CC++程序设计本科A组/6/前缀表达式.cpp)
 
 add_executable(2015.9 历届试题/2015年第六届/C语言A组/9/垒骰子_3_矩阵快速幂.cpp)
